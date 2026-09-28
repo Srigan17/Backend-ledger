@@ -6,8 +6,19 @@ const app = express()
 app.use(express.json())
 app.use(cookieParser())
 
+/**
+ * - Routes required
+ */
+const authRouter = require("./routes/auth.routes")
+
+/**
+ * - Use Routes
+ */
+
 app.get("/", (req, res) => {
     res.send("Ledger Service is up and running")
 })
+
+app.use("/api/auth", authRouter)
 
 module.exports = app
